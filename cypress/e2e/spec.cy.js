@@ -13,7 +13,7 @@ describe('Usuários devem realizar o login', () => {
     })
 
     it('Criando Etapas no orçamento', () => { //Login com senha correta
-      cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
+      cy.visit('orc/orcamentos/688cafbb04184fb8b083ad95') //Em Producao: 688cafbb04184fb8b083ad95       Em Teste:68af5bbecab727f01b964938 
       cy.wait(1000)
       cy.get('.add_phase_end').click()
 
@@ -168,8 +168,8 @@ describe('Usuários devem realizar o login', () => {
       cy.get('.salvar_new_etapa > .material-icons').click()
     })
 
-    it('Adicionando Composições no Orçamento', () => {
-      cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
+    it.only('Adicionando Composições no Orçamento', () => {
+      cy.visit('orc/orcamentos/688cafbb04184fb8b083ad95') //ALTERAR ID DO ORCAMENTO
       cy.wait(1000)
 
       //000662
@@ -179,7 +179,7 @@ describe('Usuários devem realizar o login', () => {
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('1.1')
       cy.get('.td_qty > .form-control').type('1')
-      cy.get('#tr_ml_6892538eb723c2911d38360f > :nth-child(4)')
+      cy.get('#tr_ml_6867ea926ba5e2591167dc5a > :nth-child(4)')
       cy.get('[id^=tr_ml]').click()
       cy.get('.td_code > .form-control').type('{enter}')
 
@@ -200,27 +200,47 @@ describe('Usuários devem realizar o login', () => {
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('1.3')
       cy.get('.td_qty > .form-control').type('1')
-      cy.get('#tr_ml_689cd5d3cee2be6965246117 > :nth-child(4)').click()
+      cy.get('[id^=tr_ml]').click()
       cy.get('.td_code > .form-control').type('{enter}')
 
       //98681
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
-      cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type('98681')
+      cy.get('#select_input_bases').select('SBC')
+      cy.get('.td_code > .form-control').type('011094')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('2.1')
       cy.get('.td_qty > .form-control').type('1')
-      cy.get('#tr_ml_689cd5d6cee2be696524664b > :nth-child(4)').click()
+      cy.get('[id^=tr_ml]').click()
       cy.get('.td_code > .form-control').type('{enter}')
 
-      //98681
+      //15.05.520
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
-      cy.get('#select_input_bases').select('CPOS/CDHU')
+      cy.get('#select_input_bases').select('CPOS')
       cy.get('.td_code > .form-control').type('15.05.520')
       cy.get('.td_itemization > .form-control').clear()
-      cy.get('.td_itemization > .form-control').type('2.2 ')
+      cy.get('.td_itemization > .form-control').type('2.2')
       cy.get('.td_qty > .form-control').type('1')
-      cy.get('#tr_ml_6862c8d849c427561cd345d6 > :nth-child(4)').click()
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //89488
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('89488')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('2.3')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //89488
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SBC')
+      cy.get('.td_code > .form-control').type('011094')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.1')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
       cy.get('.td_code > .form-control').type('{enter}')
       })
   })

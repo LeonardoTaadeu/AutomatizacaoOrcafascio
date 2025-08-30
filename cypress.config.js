@@ -4,7 +4,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
     },
-    baseUrl: 'https://teste.orcafascio.com',
+    baseUrl: 'https://app.orcafascio.com',
     testIsolation: false,
   },
 });
