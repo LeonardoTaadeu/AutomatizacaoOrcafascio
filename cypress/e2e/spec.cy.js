@@ -233,12 +233,222 @@ describe('Usuários devem realizar o login', () => {
       cy.get('[id^=tr_ml]').click()
       cy.get('.td_code > .form-control').type('{enter}')
 
-      //89488
+      //011094
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SBC')
       cy.get('.td_code > .form-control').type('011094')
       cy.get('.td_itemization > .form-control').clear()
-      cy.get('.td_itemization > .form-control').type('3.1')
+      cy.get('.td_itemization > .form-control').type('3.1.1')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //90930
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('90930')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.1.2')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //87259
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('87259')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.1.3')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //15.05.520
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('CPOS')
+      cy.get('.td_code > .form-control').type('15.05.520')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.2.1')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //89467
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('89467')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.2.2')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //87905
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('87905')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.2.3')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //87543
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('87543')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.2.4')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //91328
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('91328')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.3.1')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //94570
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('94570')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.3.2')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //94559
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('94559')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.3.3')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //99837
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('99837')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('3.3.4')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //011094
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SBC')
+      cy.get('.td_code > .form-control').type('011094')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.1.1')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //90930
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('90930')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.1.2')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //87259
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('87259')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.1.3')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //15.05.520
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('CPOS')
+      cy.get('.td_code > .form-control').type('15.05.520')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.2.1')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //89467
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('89467')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.2.2')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //87905
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('87905')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.2.3')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //87543
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('87543')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.2.4')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //91328
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('91328')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.3.1')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //94570
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('94570')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.3.2')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //94559
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('94559')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.3.3')
+      cy.get('.td_qty > .form-control').type('1')
+      cy.get('[id^=tr_ml]').click()
+      cy.get('.td_code > .form-control').type('{enter}')
+
+      //99837
+      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+      cy.get('#select_input_bases').select('SINAPI')
+      cy.get('.td_code > .form-control').type('99837')
+      cy.get('.td_itemization > .form-control').clear()
+      cy.get('.td_itemization > .form-control').type('4.3.4')
       cy.get('.td_qty > .form-control').type('1')
       cy.get('[id^=tr_ml]').click()
       cy.get('.td_code > .form-control').type('{enter}')
