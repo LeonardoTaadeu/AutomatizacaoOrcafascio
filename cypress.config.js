@@ -4,7 +4,11 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
     },
-    baseUrl: 'https://app.orcafascio.com',
+    baseUrl: 'https://teste.orcafascio.com',
     testIsolation: false,
+    redirectionLimit: 100,
+    experimentalMemoryManagement: true,
+    numTestsKeptInMemory: 0,
+    defaultCommandTimeout: 10000,
   },
 });
