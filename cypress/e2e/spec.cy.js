@@ -687,18 +687,264 @@ describe('Usuários devem realizar o login', () => {
       cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
       cy.get(':nth-child(10) > .codigo > .link-codigo > a').click()
       cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
-    })
 
-    it('Teste dos bancos pessoal', () => {
-      cy.get(':nth-child(3) > .with-sub').click()
-      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
-
-      //AGESUL
+      //AGETOP CIVIL
       cy.get('.blue-box').click()
       cy.get('#unselect-all-checkboxes').click()
       cy.get('#agetop_civil_checkbox').click()
       cy.get('#submit-btn-modal').click()
       cy.get(':nth-child(4) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(30) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(16) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+
+      //AGETOP RODOVIARIA
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#agetop_rodoviaria_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(4) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(29) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(12) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+
+      //SEDOP
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#sedop_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(4) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(29) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(12) > .codigo > .link-codigo > a').click()
+      cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
+
+      //SOLICITAR AO MAUMAU NA SEGUNDA PARA QUE ELE SUBA A BASE DERPR NO TESTE
+    })
+
+    it('Criando uma composicao propria com todos bancos (SINAPI - TRUNCAR - MAO DE OBRA)', () => {
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(2) > .nav-link').click()
+      cy.get('[name="banco_emp_composicao[codigo]"]').clear()
+      cy.get('[name="banco_emp_composicao[codigo]"]').type('Teste Composicao Automatizada SINAPI 1')
+      cy.get('[name="banco_emp_composicao[c2]"]').type('Teste Composicao Automatizada SINAPI 1')
+      cy.get('[name="banco_emp_composicao[descricao]"]').type('Teste Composicao Automatizada SINAPI 1')
+      cy.get('[name="banco_emp_composicao[unidade]"]').type('m2')
+      cy.get('#banco_emp_composicao_mao_de_obra').click()
+      cy.get('[name="banco_emp_composicao[observacao]"]').type('Teste Composicao Automatizada SINAPI 1')
+      cy.get('.justify-content-end > .btn').click()
+      cy.get('#nacional-coverage').click()
+      cy.get('#sudeste-coverage').click()
+      cy.get('#nordeste-coverage').click()
+      cy.get('#centro-oeste-coverage').click()
+      cy.get('#norte-coverage').click()
+      cy.get('#sul-coverage').click()
+      cy.get('[name="commit"]').click()
+    })
+
+    it('Adicionando Composicoes Auxiliares de todos os bancos e entrando nelas', () => {
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+      cy.get(':nth-child(3) > [name="bases[emp][selected]"]').click()
+      cy.get('#submit-btn').click()
+      cy.get('.link-codigo > a').click()
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+
+      //COMP. AUXILIAR SINAPI
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(2) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP. AUXILIAR SBC
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SBC')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(2) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SICRO3
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SICRO3')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(3) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SICRO2
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SICRO2')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(4) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR ORSE
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('ORSE')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(5) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SEDOP
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SEDOP')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(6) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SEINFRA
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SEINFRA')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(7) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SETOP
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SETOP')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(8) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR IOPES
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('IOPES')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(9) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SIURB
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SIURB')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(10) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SIURB INFRA
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SIURB INFRA')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(11) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SUDECAP
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SUDECAP')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(12) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR CPOS
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('CPOS')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(13) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR FDE
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('FDE')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(14) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR AGESUL
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('AGESUL')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(15) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR AGETOP CIVIL
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('AGETOP CIVIL')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(16) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR AGETOP RODOVIARIA
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('AGETOP RODOVIARIA')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(17) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR CAEMA
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('CAEMA')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(18) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR EMBASA
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('EMBASA')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(19) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR CAERN
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('CAERN')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(20) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR COMPESA
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('COMPESA')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(21) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR EMOP
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('EMOP')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(22) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
+
+      //COMP.AUXILIAR SCO
+      cy.get('#insert-new-item-buttons > .row > :nth-child(1) > .btn').click()
+      cy.get('[name="base"]').select('SCO')
+      cy.get('[id^=query_code_row]').type('10')
+      cy.get('tbody > :nth-child(23) > :nth-child(4)').click()
+      cy.get('[id^=query_qty_row]').type('1')
+      cy.get('.bg-transparent > .material-icons').click()
     })
   })
 })
