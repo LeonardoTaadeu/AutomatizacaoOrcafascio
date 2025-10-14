@@ -6,9 +6,12 @@ module.exports = defineConfig({
     },
     baseUrl: 'https://teste.orcafascio.com',
     testIsolation: false,
-    redirectionLimit: 100,
+    redirectionLimit: 200,
     experimentalMemoryManagement: true,
     numTestsKeptInMemory: 0,
     defaultCommandTimeout: 10000,
+
+    
+
   },
 });
