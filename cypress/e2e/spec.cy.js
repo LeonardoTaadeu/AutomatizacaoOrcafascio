@@ -12,7 +12,7 @@ describe('Usuários devem realizar o login', () => {
       return false
     })
     it('Criando Etapas no orçamento', () => { //Login com senha correta      
-      cy.visit('orc/orcamentos/68af5bbecab727f01b964938') //Em Producao: 688cafbb04184fb8b083ad95       Em Teste:68af5bbecab727f01b964938 
+      cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
       cy.wait(1000)
       cy.get('.add_phase_end').click()
 
@@ -59,13 +59,13 @@ describe('Usuários devem realizar o login', () => {
 
     it('Adicionando Composições no Orçamento', () => {
 
-      cy.visit('orc/orcamentos/68af5bbecab727f01b964938') //ALTERAR ID DO ORCAMENTO
+      cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
       cy.wait(1000)
 
       //000662
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SBC')
-      cy.get('.td_code > .form-control').type('000662')
+      cy.get('.td_code > .form-control').type('000662') //NÃO TIRAR ESSA COMP POIS ELA SERVE PARA O TESTE DE EXCLUSÃO DO ORÇAMENTO AO CLICAR COM O BOTÃO DIREITO
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('1.1')
       cy.get('.td_qty > .form-control').type('1')
@@ -73,10 +73,9 @@ describe('Usuários devem realizar o login', () => {
       cy.get('.td_code > .form-control').type('{enter}')
 
       //73859
-      //cy.wait(2000)
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type(randomValue)
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('1.2')
       cy.get('.td_qty > .form-control').type('1')
@@ -86,7 +85,7 @@ describe('Usuários devem realizar o login', () => {
       //98458
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type(randomValue)
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('1.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -116,7 +115,7 @@ describe('Usuários devem realizar o login', () => {
       //89488
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type(randomValue)
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('2.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -136,7 +135,7 @@ describe('Usuários devem realizar o login', () => {
       //90930
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.1.2')
       cy.get('.td_qty > .form-control').type('1')
@@ -146,7 +145,7 @@ describe('Usuários devem realizar o login', () => {
       //87259
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.1.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -166,7 +165,7 @@ describe('Usuários devem realizar o login', () => {
       //89467
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.2.2')
       cy.get('.td_qty > .form-control').type('1')
@@ -176,7 +175,7 @@ describe('Usuários devem realizar o login', () => {
       //87905
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.2.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -186,7 +185,7 @@ describe('Usuários devem realizar o login', () => {
       //87543
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.2.4')
       cy.get('.td_qty > .form-control').type('1')
@@ -196,7 +195,7 @@ describe('Usuários devem realizar o login', () => {
       //91328
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.3.1')
       cy.get('.td_qty > .form-control').type('1')
@@ -206,7 +205,7 @@ describe('Usuários devem realizar o login', () => {
       //94570
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.3.2')
       cy.get('.td_qty > .form-control').type('1')
@@ -216,7 +215,7 @@ describe('Usuários devem realizar o login', () => {
       //94559
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.3.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -226,7 +225,7 @@ describe('Usuários devem realizar o login', () => {
       //99837
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('3.3.4')
       cy.get('.td_qty > .form-control').type('1')
@@ -246,7 +245,7 @@ describe('Usuários devem realizar o login', () => {
       //90930
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.1.2')
       cy.get('.td_qty > .form-control').type('1')
@@ -256,7 +255,7 @@ describe('Usuários devem realizar o login', () => {
       //87259
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.1.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -276,7 +275,7 @@ describe('Usuários devem realizar o login', () => {
       //89467
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.2.2')
       cy.get('.td_qty > .form-control').type('1')
@@ -286,7 +285,7 @@ describe('Usuários devem realizar o login', () => {
       //87905
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.2.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -296,7 +295,7 @@ describe('Usuários devem realizar o login', () => {
       //87543
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.2.4')
       cy.get('.td_qty > .form-control').type('1')
@@ -306,7 +305,7 @@ describe('Usuários devem realizar o login', () => {
       //91328
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.3.1')
       cy.get('.td_qty > .form-control').type('1')
@@ -316,7 +315,7 @@ describe('Usuários devem realizar o login', () => {
       //94570
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.3.2')
       cy.get('.td_qty > .form-control').type('1')
@@ -326,7 +325,7 @@ describe('Usuários devem realizar o login', () => {
       //94559
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.3.3')
       cy.get('.td_qty > .form-control').type('1')
@@ -336,7 +335,7 @@ describe('Usuários devem realizar o login', () => {
       //99837
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
       cy.get('#select_input_bases').select('SINAPI')
-      cy.get('.td_code > .form-control').type()
+      cy.get('.td_code > .form-control').type('92354')
       cy.get('.td_itemization > .form-control').clear()
       cy.get('.td_itemization > .form-control').type('4.3.4')
       cy.get('.td_qty > .form-control').type('1')
@@ -376,6 +375,7 @@ describe('Usuários devem realizar o login', () => {
       cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
       cy.get('.blue-box').click()
       cy.get('#sinapi_data_select').select('07/2025')
+      
       cy.get('#submit-btn-modal').click()
       cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
       cy.get(':nth-child(2) > a > .flaticon-bricks3').click()
@@ -929,7 +929,7 @@ describe('Usuários devem realizar o login', () => {
     })
 
     it('Adicionando etapas de todos itens', () => { //Login com senha correta
-      cy.visit('orc/orcamentos/68af5bbecab727f01b964938') //Em Producao: 688cafbb04184fb8b083ad95       Em Teste:68af5bbecab727f01b964938 
+      cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
       cy.wait(1000)
       
       cy.get('.add_phase_end').click()
@@ -1705,16 +1705,229 @@ describe('Usuários devem realizar o login', () => {
       cy.get('.items_delete_all > .bg-resource').click()
     })
 
-    it('Teste de Array adicionando em uma composição', () => {
-
-      const testeComposicoes = ['92354', '97503', '95384', '88264', '101408', '88281', '101422', '101431'];
-      const testeComposicoesUsar = testeComposicoes[Math.floor(Math.random() * testeComposicoes.length)]
+    it('Copiando Composições Oficiais', () => {
       
-      cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
-      cy.wait(1000)
-      cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
-      cy.get('.td_code > .form-control').type(testeComposicoesUsar)
+      //SINAPI 103155
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click() 
+      
+      //SICRO3
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#sicro3_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(1) > .dropdown-toggle').click()
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(1) > .dropdown-toggle').click()
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(1) > .dropdown-toggle').click()
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click() 
+
+      //SBC
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#sbc_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click() 
+
+      //SETOP
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#setop_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(1) > .dropdown-toggle').click()
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(1) > .dropdown-toggle').click()
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(1) > .dropdown-toggle').click()
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+      
+      //IOPES
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#iopes_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click() 
+
+      //SIURB
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#siurb_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click() 
+
+      //SIURB_INFRA
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#siurb_infra_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      //SUDECAP
+      cy.get('.blue-box').click()
+      cy.get('#unselect-all-checkboxes').click()
+      cy.get('#sudecap_checkbox').click()
+      cy.get('#submit-btn-modal').click()
+      cy.get(':nth-child(3) > .with-sub').click()
+      cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(15) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+      cy.get('#submit-btn').click()
+      cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+      cy.get(':nth-child(26) > .codigo > .link-codigo > a').click()
+      cy.get('.headmenu > :nth-child(1) > a').click()
+      cy.get('.btn-primary').click()
+      cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+      cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click() 
     })
-    
   })
 })
