@@ -1,3 +1,5 @@
+
+import {dados} from '../fixtures/dadosBancos.js';
 describe('Teste de códigos do Cypress', () => {
     context('Teste de Códigos do Cypress2', () => {
         beforeEach(() => {
@@ -11,7 +13,7 @@ describe('Teste de códigos do Cypress', () => {
 
          it('Criando Etapas de um orçamento', () => {
 
-            const nomeEtapas = ['Serviços Preliminares', 'Pisos', 'Paredes', 'Esquadrias', 'PAV-2', 'Pisos', 'Paredes', 'Esquadrias']
+            const nomeEtapas = ['SERVIÇOS PRELIMINARES', 'FUNDAÇÕES', 'PAV-1', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-2', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-3', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-4', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-5', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-6', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-7', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-8', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-9', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-10', 'PISOS', 'PAREDES', 'ESQUADRIAS']
 
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
@@ -29,9 +31,6 @@ describe('Teste de códigos do Cypress', () => {
 
         it('Criando laço de repetição com array forEach', () => {
 
-            const itensSinapi = ['105400', '105263', '105261', '105261', '92805', '94882', '90729', '90729']
-            const itemizacao = ['1.1', '1.2', '1.3', '2.1', '2.2', '2.3', '3.1', '3.2']
-
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -39,18 +38,15 @@ describe('Teste de códigos do Cypress', () => {
             cy.contains('Teste Orçamento').click()
             cy.wait(1000)
 
-            cy.wrap(itensSinapi).each((itens, index) => {
+                cy.wrap(dados).each((item) => {
                     cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
                     cy.get('.td_qty > .form-control').type('1')
-                    cy.get('.td_code > .form-control').type(itens)
+                    cy.get('.td_code > .form-control').type(item.codigoSinapi)
                     cy.get('.td_itemization > .form-control').clear()
-
-                    const codItemizacao = itemizacao[index] || '1';
-                    cy.get('.td_itemization > .form-control').type(codItemizacao)
-
+                    cy.get('.td_itemization > .form-control').type(item.itemizacaoSinapi)
                     cy.get('[id^=tr_ml]').click()
                     cy.get('.td_code > .form-control').type('{enter}')
-            })
+                })
 
             cy.wait(1000)
             cy.get('#th_items_selection').click()
@@ -58,7 +54,7 @@ describe('Teste de códigos do Cypress', () => {
             cy.get('.items_delete_all > .bg-resource').click()
         })
 
-        it.only('Entrando em Composições dentro do banco do sistema', () => {
+        it('Entrando em Composições dentro do banco do sistema', () => {
             const bancosComposicoes = ['#sbc_checkbox', '#sinapi_checkbox', '#sicro_checkbox']
             const seletorBanco = bancosComposicoes[0];
 
