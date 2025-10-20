@@ -1,5 +1,5 @@
 
-import {dados} from '../fixtures/dadosBancos.js';
+import {dadosSinapi, dadosItemizacao} from '../fixtures';
 describe('Teste de códigos do Cypress', () => {
     context('Teste de Códigos do Cypress2', () => {
         beforeEach(() => {
@@ -29,7 +29,7 @@ describe('Teste de códigos do Cypress', () => {
             })
         })
 
-        it('Criando laço de repetição com array forEach', () => {
+        it('Adicionando as composições dentro do orçamento', () => {
 
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
@@ -38,55 +38,47 @@ describe('Teste de códigos do Cypress', () => {
             cy.contains('Teste Orçamento').click()
             cy.wait(1000)
 
-                cy.wrap(dados).each((item) => {
+                cy.wrap(dadosSinapi).each((item) => {
                     cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
                     cy.get('.td_qty > .form-control').type('1')
                     cy.get('.td_code > .form-control').type(item.codigoSinapi)
+                    cy.get('#select_input_bases').select(item.bancoSinapi)
                     cy.get('.td_itemization > .form-control').clear()
                     cy.get('.td_itemization > .form-control').type(item.itemizacaoSinapi)
-                    cy.get('[id^=tr_ml]').click()
+                    cy.get('[id^=tr_ml]').click({multiple: true})
                     cy.get('.td_code > .form-control').type('{enter}')
                 })
+        })
 
+
+        it('Aplicação de BDI', () =>{
+            cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
+            cy.get('#budget_config_bdi > th.tx-right > a').click()
+            cy.wait(1000)
+            cy.get('#bdi_manual').click()
+            cy.wait(1000)
+            cy.get('#\\30 ').type('25\,01')
+            cy.wait(1000)
+            cy.get('.form-bdi > .modal-content > .modal-footer > .btn-primary').click()
+        })
+
+        it('Retirando BDI', () => {
+            cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
+            cy.get('#budget_config_bdi > th.tx-right > a').click()
+            cy.get('#\\30 ').clear()
+            cy.get('.form-bdi > .modal-content > .modal-footer > .btn-primary').click()
+        })
+
+        it('Apagando o orçamento', () => {
+            cy.get('.sh-logopanel').click()
+            cy.get(':nth-child(2) > .with-sub').click()
+            cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
+            cy.get('#filtro_text').type('Teste')
+            cy.contains('Teste Orçamento').click()
             cy.wait(1000)
             cy.get('#th_items_selection').click()
-            cy.contains('a', '105400').rightclick()
+            cy.contains('a', '103155').rightclick()
             cy.get('.items_delete_all > .bg-resource').click()
         })
-
-        it('Entrando em Composições dentro do banco do sistema', () => {
-            const bancosComposicoes = ['#sbc_checkbox', '#sinapi_checkbox', '#sicro_checkbox']
-            const seletorBanco = bancosComposicoes[0];
-
-            cy.wrap(bancosComposicoes).each((bancos) => {
-                cy.get('.sh-logopanel').click()
-                cy.get(':nth-child(3) > .with-sub').click()
-                cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
-                cy.get('.blue-box').click()
-                cy.get('#unselect-all-checkboxes').click()
-                cy.get(seletorBanco).click()
-                cy.get('#submit-btn-modal').click()
-                cy.get(':nth-child(2) > .codigo > .link-codigo > a').click()
-                cy.go('back')
-                cy.get('#submit-btn').click
-                cy.get(':nth-child(3) > .codigo > .link-codigo > a').click()
-                cy.go('back')
-                cy.get('#submit-btn').click()
-                cy.get(':nth-child(4) > .codigo > .link-codigo > a').click()
-                cy.go('back')
-                cy.get('#submit-btn').click()
-                cy.get(':nth-child(5) > .codigo > .link-codigo > a').click()
-                cy.go('back')
-                cy.get('#submit-btn').click()
-                cy.get(':nth-child(6) > .codigo > .link-codigo > a').click()
-                cy.go('back')
-                cy.get('#submit-btn').click()
-                cy.get(':nth-child(7) > .codigo > .link-codigo > a').click()
-                cy.go('back')
-                cy.get('#submit-btn').click()
-            })
-
-        })
-        
     })
 })

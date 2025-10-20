@@ -1049,9 +1049,9 @@ describe('Usuários devem realizar o login', () => {
       cy.get('.salvar_new_etapa > .material-icons').click()
     })
 
-    it('Adicionando Composições no Orçamento', () => {
+    it.only('Adicionando Composições no Orçamento', () => {
       cy.visit('orc/orcamentos/68af5bbecab727f01b964938') //ALTERAR ID DO ORCAMENTO
-      cy.wait(1000)
+      cy.wait(3000)
 
       //SINAPI
       cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
@@ -1701,7 +1701,7 @@ describe('Usuários devem realizar o login', () => {
     it('Apagando o orçamento', () => {
       cy.visit('orc/orcamentos/68af5bbecab727f01b964938')
       cy.get('#th_items_selection').click()
-      cy.contains('a', '2040106').rightclick()
+      cy.contains('a', '707000').rightclick()
       cy.get('.items_delete_all > .bg-resource').click()
     })
 
