@@ -1,7 +1,8 @@
 
-import {dadosSinapi, dadosItemizacao} from '../fixtures';
-describe('Teste de códigos do Cypress', () => {
-    context('Teste de Códigos do Cypress2', () => {
+import {dadosSinapi, dadosBancosOficiais, compTipoSicro, compTipoSinapi, nomeEtapaOrcamento} from '../fixtures';
+
+describe('Teste Automatizado da Orcafascio', () => {
+    context('Realizacao de Testes do sistema', () => {
         beforeEach(() => {
             cy.sessionLogin()
             cy.visit('/home')
@@ -9,9 +10,9 @@ describe('Teste de códigos do Cypress', () => {
         })
         Cypress.on('uncaught:exception', (err, runnable) => {
          return false
-         })
+        })
 
-         it('Criando um novo orcamento', () => {
+        it('Criando um novo orcamento', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -28,18 +29,14 @@ describe('Teste de códigos do Cypress', () => {
             cy.get('[name="commit"]').click()
             cy.get('[name="commit"]').click()
 
-            const nomeBancos = ['SBC', 'SICRO3', 'SIURB', 'SIURB INFRA', 'FDE', 'CPOS', 'EMOP', 'SCO', 'SETOP', 'SUDECAP', 'IOPES', 'ORSE', 'SEINFRA', 'CAEMA', 'EMBASA', 'CAERN', 'COMPESA', 'AGESUL', 'AGETOP CIVIL', 'AGETOP RODOVIARIA', 'SEDOP', 'DERPR']
-            cy.wrap(nomeBancos).each((selecionandoBanco) => {
-                cy.get(`[name="${selecionandoBanco}_exibir_relatorio"]`).check({force: true})
+            cy.wrap(dadosBancosOficiais).each((selecionandoBanco) => {
+                cy.get(`[name="${selecionandoBanco.nomeBanco}_exibir_relatorio"]`).check({force: true})
             })
 
             cy.get(':nth-child(55) > .col > .right > [name="commit"]').click()
-         })
+        })
 
-         it('Criando Etapas de um orçamento', () => {
-
-            const nomeEtapas = ['SERVIÇOS PRELIMINARES', 'FUNDAÇÕES', 'PAV-1', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-2', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-3', 'PISOS', 'PAREDES', 'ESQUADRIAS', 'PAV-4']
-
+        it('Criando Etapas de um orçamento', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -47,15 +44,14 @@ describe('Teste de códigos do Cypress', () => {
             cy.contains('Teste Orçamento').click()
             cy.wait(1000)
 
-            cy.wrap(nomeEtapas).each((etapas) => {
+            cy.wrap(nomeEtapaOrcamento).each((etapas) => {
                 cy.get('.add_phase_end').click()
-                cy.get('.td_descr > .form-control').type(etapas)
+                cy.get('.td_descr > .form-control').type(etapas.nomeEtapa)
                 cy.get('.salvar_new_etapa > .material-icons').click()
             })
         })
 
         it('Adicionando as composições dentro do orçamento', () => {
-
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -63,16 +59,16 @@ describe('Teste de códigos do Cypress', () => {
             cy.contains('Teste Orçamento').click()
             cy.wait(2000)
 
-                cy.wrap(dadosSinapi).each((item) => {
-                    cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
-                    cy.get('.td_qty > .form-control').type('1')
-                    cy.get('.td_code > .form-control').type(item.codigoSinapi)
-                    cy.get('#select_input_bases').select(item.bancoSinapi)
-                    cy.get('.td_itemization > .form-control').clear()
-                    cy.get('.td_itemization > .form-control').type(item.itemizacaoSinapi)
-                    cy.get('[id^=tr_ml]').click({multiple: true})
-                    cy.get('.td_code > .form-control').type('{enter}')
-                })
+            cy.wrap(dadosSinapi).each((item) => {
+                cy.get(':nth-child(2) > .dropdown > .add_item_end').click()
+                cy.get('.td_qty > .form-control').type('1')
+                cy.get('.td_code > .form-control').type(item.codigoSinapi)
+                cy.get('#select_input_bases').select(item.bancoSinapi)
+                cy.get('.td_itemization > .form-control').clear()
+                cy.get('.td_itemization > .form-control').type(item.itemizacaoSinapi)
+                cy.get('[id^=tr_ml]').click({multiple: true})
+                cy.get('.td_code > .form-control').type('{enter}')
+            })
         })
 
 
@@ -128,6 +124,106 @@ describe('Teste de códigos do Cypress', () => {
             cy.wait(1000)
             cy.get('[name="texto_de_exclusao"]').type('excluir')
             cy.get('#modal-budget-exclusion > .modal-dialog > .modal-content > .modal-footer > .btn').click()
-         })
+        })
+
+        it('Entrando nas composicoes de bancos oficiais e copiando elas', () => {
+            cy.wrap(compTipoSinapi).each((bancoCompSinapi) => {
+                cy.get(':nth-child(3) > .with-sub').click()
+                cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+                cy.get('.blue-box').click()
+                cy.get('#unselect-all-checkboxes').click()
+                cy.get(`[name="bases[${bancoCompSinapi.nomeBancoSinapi}][selected]"]`).click()
+                cy.get('#submit-btn-modal').click()
+                cy.get(':nth-child(9) > .codigo > .link-codigo > a').click()
+                cy.get('.headmenu > :nth-child(1) > a').click()
+                cy.get('.btn-primary').click()
+                cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+                cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+                cy.get(':nth-child(3) > .with-sub').click()
+                cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+                cy.get('.blue-box').click()
+                cy.get('#unselect-all-checkboxes').click()
+                cy.get(`[name="bases[${bancoCompSinapi.nomeBancoSinapi}][selected]"]`).click()
+                cy.get('#submit-btn-modal').click()
+                cy.get(':nth-child(21) > .codigo > .link-codigo > a').click()
+                cy.get('.headmenu > :nth-child(1) > a').click()
+                cy.get('.btn-primary').click()
+                cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+                cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+
+                cy.get(':nth-child(3) > .with-sub').click()
+                cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+                cy.get('.blue-box').click()
+                cy.get('#unselect-all-checkboxes').click()
+                cy.get(`[name="bases[${bancoCompSinapi.nomeBancoSinapi}][selected]"]`).click()
+                cy.get('#submit-btn-modal').click()
+                cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+                cy.get(':nth-child(9) > .codigo > .link-codigo > a').click()
+                cy.get('.headmenu > :nth-child(1) > a').click()
+                cy.get('.btn-primary').click()
+                cy.get(':nth-child(2) > #navbarDropdown').click({force: true})
+                cy.get('[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click()
+            })
+
+             cy.wrap(compTipoSicro).each((bancoCompSicro) => {
+                cy.get(':nth-child(3) > .with-sub').click()
+                cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+                cy.get('.blue-box').click()
+                cy.get('#unselect-all-checkboxes').click()
+                cy.get(`[name="bases[${bancoCompSicro.nomeBancoSicro}][selected]"]`).click()
+                cy.get('#submit-btn-modal').click()
+                cy.get(':nth-child(9) > .codigo > .link-codigo > a').click()
+                cy.get('.headmenu > :nth-child(1) > a').click()
+                cy.get('.btn-primary').click()
+                cy.get(':nth-child(1) > .dropdown-toggle').click()
+                cy.get('.open > .dropdown-menu > :nth-child(4) > a').click()
+
+                cy.get(':nth-child(3) > .with-sub').click()
+                cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+                cy.get('.blue-box').click()
+                cy.get('#unselect-all-checkboxes').click()
+                cy.get(`[name="bases[${bancoCompSicro.nomeBancoSicro}][selected]"]`).click()
+                cy.get('#submit-btn-modal').click()
+                cy.get(':nth-child(21) > .codigo > .link-codigo > a').click()
+                cy.get('.headmenu > :nth-child(1) > a').click()
+                cy.get('.btn-primary').click()
+                cy.get(':nth-child(1) > .dropdown-toggle').click()
+                cy.get('.open > .dropdown-menu > :nth-child(4) > a').click()
+
+                cy.get(':nth-child(3) > .with-sub').click()
+                cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
+                cy.get('.blue-box').click()
+                cy.get('#unselect-all-checkboxes').click()
+                cy.get(`[name="bases[${bancoCompSicro.nomeBancoSicro}][selected]"]`).click()
+                cy.get('#submit-btn-modal').click()
+                cy.get(':nth-child(1) > .pagination-custom > #nav-page-items > #nav-page-2').click()
+                cy.get(':nth-child(9) > .codigo > .link-codigo > a').click()
+                cy.get('.headmenu > :nth-child(1) > a').click()
+                cy.get('.btn-primary').click()
+                cy.get(':nth-child(1) > .dropdown-toggle').click()
+                cy.get('.open > .dropdown-menu > :nth-child(4) > a').click()
+            })
+        })
+
+        it('Criando uma composicao propria com todos bancos (SINAPI - TRUNCAR - MAO DE OBRA)', () => {
+            cy.get(':nth-child(3) > .with-sub').click()
+            cy.get(':nth-child(3) > .nav-sub > :nth-child(2) > .nav-link').click()
+            cy.get('[name="banco_emp_composicao[codigo]"]').clear()
+            cy.get('[name="banco_emp_composicao[codigo]"]').type('Teste Composicao Automatizada SINAPI 1')
+            cy.get('[name="banco_emp_composicao[c2]"]').type('Teste Composicao Automatizada SINAPI 1')
+            cy.get('[name="banco_emp_composicao[descricao]"]').type('Teste Composicao Automatizada SINAPI 1')
+            cy.get('[name="banco_emp_composicao[unidade]"]').type('m2')
+            cy.get('#banco_emp_composicao_mao_de_obra').click()
+            cy.get('[name="banco_emp_composicao[observacao]"]').type('Teste Composicao Automatizada SINAPI 1')
+            cy.get('.justify-content-end > .btn').click()
+            cy.get('#nacional-coverage').click()
+            cy.get('#sudeste-coverage').click()
+            cy.get('#nordeste-coverage').click()
+            cy.get('#centro-oeste-coverage').click()
+            cy.get('#norte-coverage').click()
+            cy.get('#sul-coverage').click()
+            cy.get('[name="commit"]').click()
+        })
     })
 })

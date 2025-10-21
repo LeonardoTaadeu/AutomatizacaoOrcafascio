@@ -38,5 +38,4 @@ export const dadosSinapi = [
     {bancoSinapi: 'SINAPI', codigoSinapi: '102801', itemizacaoSinapi: '13.1'},
     {bancoSinapi: 'SBC', codigoSinapi: '020092', itemizacaoSinapi: '13.2'},
     {bancoSinapi: 'SICRO3', codigoSinapi: '4508191', itemizacaoSinapi: '13.3'},
-
 ];

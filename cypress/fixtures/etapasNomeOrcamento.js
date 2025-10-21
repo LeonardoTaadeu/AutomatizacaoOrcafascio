@@ -1,0 +1,17 @@
+export const nomeEtapaOrcamento = [
+        {nomeEtapa: 'SERVIÇOS PRELIMINARES'},
+        {nomeEtapa: 'FUNDAÇÕES'},
+        {nomeEtapa: 'PAV-1'},
+        {nomeEtapa: 'PISOS'},
+        {nomeEtapa: 'PAREDES'},
+        {nomeEtapa: 'ESQUADRIAS'},
+        {nomeEtapa: 'PAV-2'},
+        {nomeEtapa: 'PISOS'}, 
+        {nomeEtapa: 'PAREDES'}, 
+        {nomeEtapa: 'ESQUADRIAS'}, 
+        {nomeEtapa: 'PAV-3'}, 
+        {nomeEtapa: 'PISOS'}, 
+        {nomeEtapa: 'PAREDES'}, 
+        {nomeEtapa: 'ESQUADRIAS'}, 
+        {nomeEtapa: 'PAV-4'},   
+];
