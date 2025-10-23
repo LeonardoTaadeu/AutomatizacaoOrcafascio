@@ -176,6 +176,62 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('#norte-coverage').click()
             cy.get('#sul-coverage').click()
             cy.get('[name="commit"]').click()
+            cy.get('div.dropdown:nth-of-type(1) #navbarDropdown i.head-icon').click({force: true});
+            cy.get('a[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click();
+        })        
+
+        it('Criando um insumo próprio', () => {
+            cy.get('a[title="Insumos"]').click();
+            cy.get('li:nth-child(4) li:nth-child(2) a.nav-link').click();
+            cy.get('button.btn-outline-secondary').click();
+            cy.get('[name="banco_insumo_grupo[descricao]"]').click();
+            cy.wait(500)
+            cy.get('[name="banco_insumo_grupo[descricao]"]').type('Teste de alteração Insumos 1');
+            cy.get('#new_grupo_form button.btn').click();
+            cy.get('[name="banco_emp_insumo[codigo]"]').click();
+            cy.get('[name="banco_emp_insumo[codigo]"]').clear();
+            cy.get('[name="banco_emp_insumo[codigo]"]').type('1205453');
+            cy.get('[name="banco_emp_insumo[descricao]"]').click();
+            cy.get('[name="banco_emp_insumo[descricao]"]').type('Teste de alteração Insumos 1');
+            cy.get('[name="banco_emp_insumo[unidade]"]').type('m2');
+            cy.get('#col_pnd [name="banco_emp_insumo[pnd]"]').clear();
+            cy.get('#col_pnd [name="banco_emp_insumo[pnd]"]').type('100,00');
+            cy.get('#col_pd [name="banco_emp_insumo[pd]"]').clear();
+            cy.get('#col_pd [name="banco_emp_insumo[pd]"]').type('100,00');
+            cy.get('[name="banco_emp_insumo[pndi]"]').clear();
+            cy.get('[name="banco_emp_insumo[pndi]"]').type('100,00');
+            cy.get('[name="banco_emp_insumo[pdi]"]').clear();
+            cy.get('[name="banco_emp_insumo[pdi]"]').type('100,00');
+            cy.get('[name="banco_emp_insumo[observacao]"]').type('Teste de Alteração Insumos 1');
+            cy.get('button.mg-b-10').click();
+            cy.get(':nth-child(1) > .dropdown-toggle').click()
+            cy.get('.open > .dropdown-menu > :nth-child(2) > a').click()
+
+            const estadoInsumos = ['AC', 'SP']
+            cy.wrap(estadoInsumos).each((Estado)=> {
+                cy.get(`'#pnd_[${Estado.estadoInsumos}]'`).type('100')
+                cy.get(`'#pd_[${Estado.estadoInsumos}]'`).type('100')
+                cy.get(`'#pndi_[${Estado.estadoInsumos}]'`).type('100')
+                cy.get(`'#pdi_[${Estado.estadoInsumos}]'`).type('100')
+            })
+        })
+
+        it('Apagando Insumo', () => {
+            cy.get('a[title="Insumos"]').click();
+            cy.get('li:nth-child(4) li:nth-child(1) a.nav-link').click();
+            cy.get('[name="banco"]').select('Emp');
+            cy.get('[name="filtro"]').click();
+            cy.get('[name="filtro"]').type('Teste de');
+            cy.get('button.btn').click();
+            cy.get('#lista a').click();
+            cy.get('li:nth-child(1) span.headmenu-label').click();
+            cy.get('a[data-confirm="Você tem certeza que quer Apagar este Insumo?"]').click();
+        })
+
+        it('Apagando grupo de Insumo', () => {
+            cy.get('a[title="Insumos"]').click();
+            cy.get('a[href="/banco/insumo/grupo"]').click();
+            cy.get('#buscar_retorno a.btn-danger').click();
         })
     })
 })
