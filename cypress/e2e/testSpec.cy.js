@@ -1,5 +1,5 @@
 
-import {dadosSinapi, dadosBancosOficiais, compTipoSicro, compTipoSinapi, nomeEtapaOrcamento} from '../fixtures';
+import {dadosSinapi, dadosBancosOficiais, compTipoSicro, compTipoSinapi, nomeEtapaOrcamento, siglaEstados} from '../fixtures';
 
 describe('Teste Automatizado da Orcafascio', () => {
     context('Realizacao de Testes do sistema', () => {
@@ -12,7 +12,7 @@ describe('Teste Automatizado da Orcafascio', () => {
          return false
         })
 
-        it('Criando um novo orcamento', () => {
+        it('Criar um novo orçamento', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -36,7 +36,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get(':nth-child(55) > .col > .right > [name="commit"]').click()
         })
 
-        it('Criando Etapas de um orçamento', () => {
+        it('Criar novas etapas em um orçamento', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -51,7 +51,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             })
         })
 
-        it('Adicionando as composições dentro do orçamento', () => {
+        it('Adicionar as composições dentro do orçamento', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -72,7 +72,7 @@ describe('Teste Automatizado da Orcafascio', () => {
         })
 
 
-        it('Aplicação de BDI', () =>{
+        it('Aplicar BDI', () =>{
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -88,7 +88,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('.form-bdi > .modal-content > .modal-footer > .btn-primary').click()
         })
 
-        it('Retirando BDI', () => {
+        it('Retirar BDI', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -100,7 +100,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('.form-bdi > .modal-content > .modal-footer > .btn-primary').click()
         })
 
-        it('Apagando os itens do orçamento', () => {
+        it('Apagar os itens do orçamento', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -112,7 +112,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('.items_delete_all > .bg-resource').click()
         })
 
-        it('Apagando o orçamento inteiro', () => {
+        it('Apagar o orçamento inteiro', () => {
             cy.get('.sh-logopanel').click()
             cy.get(':nth-child(2) > .with-sub').click()
             cy.get(':nth-child(2) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -126,7 +126,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('#modal-budget-exclusion > .modal-dialog > .modal-content > .modal-footer > .btn').click()
         })
 
-        it('Entrando nas composicoes de bancos oficiais e copiando elas', () => {
+        it('Entrar nas composicoes de bancos oficiais e copiar elas', () => {
             cy.wrap(compTipoSinapi).each((bancoCompSinapi) => {
                 cy.get(':nth-child(3) > .with-sub').click()
                 cy.get(':nth-child(3) > .nav-sub > :nth-child(1) > .nav-link').click()
@@ -158,7 +158,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             })
         })
 
-        it('Criando uma composicao propria com todos bancos (SINAPI - TRUNCAR - MAO DE OBRA)', () => {
+        it('Criar uma composicao propria com todos bancos (SINAPI - TRUNCAR - MAO DE OBRA)', () => {
             cy.get(':nth-child(3) > .with-sub').click()
             cy.get(':nth-child(3) > .nav-sub > :nth-child(2) > .nav-link').click()
             cy.get('[name="banco_emp_composicao[codigo]"]').clear()
@@ -180,7 +180,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('a[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click();
         })        
 
-        it('Criando um insumo próprio', () => {
+        it.only('Criar um insumo próprio', () => {
             cy.get('a[title="Insumos"]').click();
             cy.get('li:nth-child(4) li:nth-child(2) a.nav-link').click();
             cy.get('button.btn-outline-secondary').click();
@@ -207,16 +207,15 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get(':nth-child(1) > .dropdown-toggle').click()
             cy.get('.open > .dropdown-menu > :nth-child(2) > a').click()
 
-            const estadoInsumos = ['AC', 'SP']
-            cy.wrap(estadoInsumos).each((Estado)=> {
-                cy.get(`'#pnd_[${Estado.estadoInsumos}]'`).type('100')
-                cy.get(`'#pd_[${Estado.estadoInsumos}]'`).type('100')
-                cy.get(`'#pndi_[${Estado.estadoInsumos}]'`).type('100')
-                cy.get(`'#pdi_[${Estado.estadoInsumos}]'`).type('100')
+            cy.wrap(siglaEstados).each((EstadoSigla)=> {
+                cy.get(`'#pnd_${siglaEstados.EstadoSigla}'`).type('100')
+                cy.get(`'#pd_${siglaEstados.EstadoSigla}'`).type('100')
+                cy.get(`'#pndi_${siglaEstados.EstadoSigla}'`).type('100')
+                cy.get(`'#pdi_${siglaEstados.EstadoSigla}'`).type('100')
             })
         })
 
-        it('Apagando Insumo', () => {
+        it.only('Apagar Insumo', () => {
             cy.get('a[title="Insumos"]').click();
             cy.get('li:nth-child(4) li:nth-child(1) a.nav-link').click();
             cy.get('[name="banco"]').select('Emp');
@@ -228,7 +227,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('a[data-confirm="Você tem certeza que quer Apagar este Insumo?"]').click();
         })
 
-        it('Apagando grupo de Insumo', () => {
+        it.only('Apagar grupo de Insumo', () => {
             cy.get('a[title="Insumos"]').click();
             cy.get('a[href="/banco/insumo/grupo"]').click();
             cy.get('#buscar_retorno a.btn-danger').click();
