@@ -180,7 +180,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('a[data-confirm="Você tem certeza que quer Apagar esta Composição?"]').click();
         })        
 
-        it.only('Criar um insumo próprio', () => {
+        it('Criar um insumo próprio', () => {
             cy.get('a[title="Insumos"]').click();
             cy.get('li:nth-child(4) li:nth-child(2) a.nav-link').click();
             cy.get('button.btn-outline-secondary').click();
@@ -208,14 +208,14 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('.open > .dropdown-menu > :nth-child(2) > a').click()
 
             cy.wrap(siglaEstados).each((EstadoSigla)=> {
-                cy.get(`'#pnd_${siglaEstados.EstadoSigla}'`).type('100')
-                cy.get(`'#pd_${siglaEstados.EstadoSigla}'`).type('100')
-                cy.get(`'#pndi_${siglaEstados.EstadoSigla}'`).type('100')
-                cy.get(`'#pdi_${siglaEstados.EstadoSigla}'`).type('100')
+                cy.get(`#pnd_${EstadoSigla.Estado}`).type('100,00')
+                cy.get(`#pd_${EstadoSigla.Estado}`).type('100,00')
+                cy.get(`#pndi_${EstadoSigla.Estado}`).type('100,00')
+                cy.get(`#pdi_${EstadoSigla.Estado}`).type('100,00')
             })
         })
 
-        it.only('Apagar Insumo', () => {
+        it('Apagar Insumo', () => {
             cy.get('a[title="Insumos"]').click();
             cy.get('li:nth-child(4) li:nth-child(1) a.nav-link').click();
             cy.get('[name="banco"]').select('Emp');
@@ -227,7 +227,7 @@ describe('Teste Automatizado da Orcafascio', () => {
             cy.get('a[data-confirm="Você tem certeza que quer Apagar este Insumo?"]').click();
         })
 
-        it.only('Apagar grupo de Insumo', () => {
+        it('Apagar grupo de Insumo', () => {
             cy.get('a[title="Insumos"]').click();
             cy.get('a[href="/banco/insumo/grupo"]').click();
             cy.get('#buscar_retorno a.btn-danger').click();

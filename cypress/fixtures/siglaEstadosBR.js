@@ -17,13 +17,10 @@ export const siglaEstados = [
     {Estado: 'PE'},
     {Estado: 'PI'},
     {Estado: 'RJ'},
-    {Estado: 'PI'},
-    {Estado: 'RJ'},
     {Estado: 'RN'},
     {Estado: 'RO'},
     {Estado: 'RR'},
     {Estado: 'SC'},
-    {Estado: 'SP'},
     {Estado: 'SE'},
     {Estado: 'TO'},
 ]
